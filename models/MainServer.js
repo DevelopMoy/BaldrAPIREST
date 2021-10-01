@@ -1,6 +1,11 @@
 const express = require('express');
+const userRoutes = require('../routes/user.routes');
+const authRoutes = require('../routes/auth.routes');
 
 class MainServer {
+    userEndpoint = "/user";
+    authEndpoint = "/auth";
+
     constructor(port) {
         this.port = port;
         this.app = express();
@@ -22,7 +27,8 @@ class MainServer {
     }
 
     assignRoutes(){
-       
+       this.app.use(this.userEndpoint,userRoutes);
+       this.app.use(this.authEndpoint,authRoutes);
     }
 }
 
