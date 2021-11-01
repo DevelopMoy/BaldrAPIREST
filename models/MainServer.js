@@ -1,12 +1,14 @@
 const express = require('express');
 const userRoutes = require('../routes/user.routes');
 const authRoutes = require('../routes/auth.routes');
+const visitRoutes = require('../routes/visit.routes');
 const placesRoutes = require('../routes/places.routes');
 
 class MainServer {
     userEndpoint = "/user";
     authEndpoint = "/auth";
     placesEndpoint = "/places";
+    visitEndpoint = "/visit";
 
     constructor(port) {
         this.port = port;
@@ -31,6 +33,7 @@ class MainServer {
     assignRoutes(){
        this.app.use(this.userEndpoint,userRoutes);
        this.app.use(this.authEndpoint,authRoutes);
+       this.app.use(this.visitEndpoint,visitRoutes);
        this.app.use(this.placesEndpoint,placesRoutes);
     }
 }

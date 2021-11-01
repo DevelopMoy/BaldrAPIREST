@@ -5,6 +5,7 @@ const databaseHlprs = require('../helpers/database.helper');
 
 
 const createPlace = async (req,res)=>{
+
     const {longitud,latitud,descripcion,centroUUID} = req.body;
     const connection = databaseHlprs.getConnectionDB();
     const uid= uuid.v4();
