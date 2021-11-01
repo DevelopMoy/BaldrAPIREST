@@ -26,6 +26,14 @@ const login = async (req,res)=>{
     )
 }
 
+const checkUserToken = async (req,res)=>{
+    return res.status(200).json({
+        ok: true,
+        msg: "Valid user"
+    });
+}
+
 module.exports = {
-    login
+    login,
+    checkUserToken
 }
