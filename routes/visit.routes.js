@@ -6,7 +6,7 @@ const dateMiddlewares = require('../middlewares/dateAndTIme.middleware');
 const helpersMdw = require('../middlewares/helpers.middleware');
 
 router.post("/create",[
-    check("visitanteUID").not().isEmpty(),
+    check("userJWT").not().isEmpty(),
     check("entrada").not().isEmpty(),
     dateMiddlewares.isValidDateTime("entrada"),
     check("lugarUID").not().isEmpty(),

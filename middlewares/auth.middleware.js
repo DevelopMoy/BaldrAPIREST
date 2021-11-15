@@ -1,5 +1,5 @@
 const jsonwebtoken = require('jsonwebtoken');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const databaseHlprs = require('../helpers/database.helper');
 
 const isAnalyst = async (req,res,next)=>{

@@ -1,16 +1,22 @@
 const databaseHlprs = require('../helpers/database.helper');
 const uuid = require('uuid');
+const jwt = require('jsonwebtoken');
+const {verify} = require("jsonwebtoken");
+const {use} = require("express/lib/router");
 
 const createVisit = async (req,res)=>{
-    const {visitanteUID,entrada,lugarUID} = req.body;
+    const {userJWT,entrada,lugarUID} = req.body;
     const errorMsg = {
         msg: "Error at creating visit, check if arguments are properly provided, if error persists please notiffy to our team, error code #2334c. ",
         ok:false
     };
 
     try{
+        let visitanteUID;
         const connection = databaseHlprs.getConnectionDB();
         const uid= uuid.v4();
+        const payload = jwt.verify(userJWT,process.env.MASTER_KEY);
+        visitanteUID = payload.uid;
         connection.query("INSERT INTO visita (uid,visitante_uid,entrada,salida,lugar_uid) VALUES (?,?,?,?,?)",[
             uid,visitanteUID,entrada,entrada,lugarUID
         ],(error,result,fields)=>{

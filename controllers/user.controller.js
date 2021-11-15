@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const uuid = require('uuid');
 const jwt = require('jsonwebtoken');
 const databaseHlprs = require('../helpers/database.helper');
