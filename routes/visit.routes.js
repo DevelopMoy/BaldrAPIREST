@@ -15,7 +15,11 @@ router.post("/create",[
 ],controller.createVisit);
 
 router.post("/exit",[
-
+    check("exitTime").not().isEmpty(),
+    check("visitUID").not().isEmpty(),
+    dateMiddlewares.isValidDateTime("exitTime"),
+    helpersMdw.validateErrors,
+    dateMiddlewares.checkDateWithTolerance("exitTime",process.env.DAYS_TOLERANCE_VALIDATION)
 ],controller.saveExitTime);
 
 module.exports = router;

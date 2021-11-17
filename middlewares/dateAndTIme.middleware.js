@@ -16,7 +16,7 @@ const checkDateWithTolerance = (dateName,tolerance)=>{ // Will check if "date" i
             next();
         }catch (errorExc){
             return res.status(400).json({
-                msg: "Error at checking dates, maximum time tolerance +- 7 days, Value provided by client -> "+req.body[dateName],
+                msg: "Error at checking dates, exceeds maximum time tolerance, Value provided by client -> "+req.body[dateName],
                 ok: false
             });
         }
@@ -26,6 +26,8 @@ const checkDateWithTolerance = (dateName,tolerance)=>{ // Will check if "date" i
 const isValidDateTime = (dateName)=>{
     return async (req,res,next)=>{
         const date = req.body[dateName];
+        console.log(req.body);
+        console.log(dateName);
         const dateValid = new Date(date);
         if (!isNaN(dateValid.getTime())){
             next();
