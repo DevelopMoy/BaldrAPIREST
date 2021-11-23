@@ -6,7 +6,7 @@ const helpersMdw = require('../middlewares/helpers.middleware');
 const helpersMdwDate = require('../middlewares/dateAndTIme.middleware');
 
 router.post("/open",[
-    check("userUID").not().isEmpty(),
+    check("userJWT").not().isEmpty(),
     check("fechaPrueba").not().isEmpty(),
     check("fechaSintomas").not().isEmpty(),
     check("detalles").not().isEmpty(),
