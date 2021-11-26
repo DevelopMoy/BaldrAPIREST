@@ -19,7 +19,19 @@ router.post("/open",[
 
 router.post("/riskbyplace",[
     check("locationUID").not().isEmpty()
-],controller.getRiskByPlace)
+],controller.getRiskByPlace);
 
+router.post("/reportsyear",[
+    // Pending to add jwt auth
+    check("year").not().isEmpty()
+],controller.getRiskPerYear)
+
+router.post("/riskplaces",[
+// Pending to add jwt auth
+],controller.getPlacesRisk);
+
+router.post("/reportscenter",[
+    // Pending to add jwt auth
+],controller.getCenterReport);
 
 module.exports = router;
